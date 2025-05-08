@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Khaled | Projects</title>
+  <title>Khaled Portfolio - Projects</title>
+  <meta name="description" content="Khaled Mnejja's portfolio showcasing projects in AI, UX design, and filmmaking.">
+  <meta property="og:title" content="Khaled Mnejja | Projects">
+  <meta property="og:description" content="Explore AIthlete, EduSolve, and more innovative projects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #000;
@@ -12,13 +17,14 @@
       --alt-accent: #C0A9F1;
       --card-bg: #111;
       --border: #6B6B6B;
+      --transition: 0.4s ease;
     }
 
     body.light {
       --bg: #FFF;
       --text: #111;
       --accent: #8A2BE2;
-      --alt-accent: #ff69b4;
+      --alt-accent: #FF69B4;
       --card-bg: #F5F5F5;
       --border: #CCC;
     }
@@ -27,9 +33,11 @@
       margin: 0;
       background-color: var(--bg);
       color: var(--text);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      transition: background-color var(--transition), color var(--transition);
+      scroll-behavior: smooth;
     }
+
     header.hero {
       position: sticky;
       top: 0;
@@ -47,32 +55,37 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .subtitle {
       color: var(--border);
       font-size: 1.1rem;
     }
+
     nav {
       margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
     }
 
     nav a {
       color: var(--text);
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
+      margin: 0 0.5rem;
       text-decoration: none;
       font-weight: 500;
-      border: 1px solid transparent;
-      transition: all 0.3s ease;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color var(--transition);
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       background-color: var(--accent);
       color: var(--bg);
-      border-color: var(--border);
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 0.3rem 0;
+      }
     }
 
     .toggle-theme {
@@ -108,7 +121,7 @@
       margin-bottom: 2rem;
     }
 
-    .projects-grid {
+    section[aria-label="Portfolio Projects"] {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
@@ -119,6 +132,9 @@
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       opacity: 0;
       transform: translateY(30px);
@@ -127,11 +143,18 @@
     .project-card.visible {
       opacity: 1;
       transform: translateY(0);
+      animation: fadeUp 0.6s ease forwards;
     }
 
     .project-card:hover {
       transform: scale(1.03);
       box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .project-thumb {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1rem;
     }
 
     .project-title {
@@ -157,6 +180,11 @@
       font-size: 0.9rem;
       border-top: 1px solid var(--border);
     }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -167,7 +195,7 @@
     <p class="subtitle">Software Engineer • UI/UX Designer • Filmmaker</p>
     <nav>
       <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
+      <a href="projects.html" class="active">Projects</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -175,31 +203,35 @@
 
   <main>
     <h2>Highlighted Work</h2>
-    <div class="projects-grid">
-      <div class="project-card">
+    <section aria-label="Portfolio Projects">
+      <a href="https://khaled-mnejja-11.github.io/Aithlete/" class="project-card" target="_blank" rel="noopener">
+        <img src="C:\Users\user\Documents\Soy Khaled\portfolio_site\portfolio_site\Aithlete_LOGO.jpeg-removebg-preview.png"" alt="AIthlete Preview" class="project-thumb">
         <div class="project-title">AIthlete</div>
         <div class="project-desc">An AI-powered fitness coaching platform with personalized plans, health monitoring, and expert feedback.</div>
         <div class="project-tags">#AI #Fitness #ResponsiveDesign</div>
-      </div>
+      </a>
 
-      <div class="project-card">
+      <a href="https://github.com/your-edusolve-link" class="project-card" target="_blank" rel="noopener">
+        <img src="images/edusolve.png" alt="EduSolve Hackathon Preview" class="project-thumb">
         <div class="project-title">EduSolve Hackathon App</div>
         <div class="project-desc">Prototype created in 48 hours to tackle Tunisia's education challenges. I designed the full UI/UX and mobile prototype.</div>
         <div class="project-tags">#Hackathon #Design #Education</div>
-      </div>
+      </a>
 
-      <div class="project-card">
+      <a href="https://github.com/your-medicalai-link" class="project-card" target="_blank" rel="noopener">
+        <img src="images/medicalai.png" alt="Medical AI Assistant Preview" class="project-thumb">
         <div class="project-title">Medical AI Assistant</div>
         <div class="project-desc">A smart system that assists doctors in making better decisions using image processing and deep learning insights.</div>
         <div class="project-tags">#MedicalAI #ML #Healthcare</div>
-      </div>
+      </a>
 
-      <div class="project-card">
+      <a href="https://github.com/your-cinevision-link" class="project-card" target="_blank" rel="noopener">
+        <img src="C:\Users\user\Documents\Soy Khaled\portfolio_site\portfolio_site\le destin.png" alt="CinéVision Preview" class="project-thumb">
         <div class="project-title">CinéVision</div>
         <div class="project-desc">My short film project exploring societal themes through cinematography and storytelling, selected in local youth events.</div>
         <div class="project-tags">#Filmmaking #Creative #Storytelling</div>
-      </div>
-    </div>
+      </a>
+    </section>
   </main>
 
   <footer>
