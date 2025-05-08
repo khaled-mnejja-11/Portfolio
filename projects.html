@@ -121,6 +121,11 @@
       margin-bottom: 2rem;
     }
 
+    section[aria-label="Portfolio Projects"] {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
 
     .project-card {
       background-color: var(--card-bg);
@@ -183,7 +188,7 @@
   </style>
 </head>
 <body>
-  <button class="toggle-theme" id="themeToggle">☀️</button>
+  <button class="toggle-theme" id="themeToggle" aria-label="Toggle theme">☀️</button>
 
   <header class="hero">
     <h1>KHALED MNEJJA</h1>
@@ -200,7 +205,7 @@
     <h2>Highlighted Work</h2>
     <section aria-label="Portfolio Projects">
       <a href="https://khaled-mnejja-11.github.io/Aithlete/" class="project-card" target="_blank" rel="noopener">
-        <img src="C:\Users\user\Documents\Soy Khaled\portfolio_site\portfolio_site\Aithlete_LOGO.jpeg-removebg-preview.png"" alt="AIthlete Preview" class="project-thumb">
+        <img src="Aithlete_LOGO.jpeg-removebg-preview.png"" alt="AIthlete Preview" class="project-thumb">
         <div class="project-title">AIthlete</div>
         <div class="project-desc">An AI-powered fitness coaching platform with personalized plans, health monitoring, and expert feedback.</div>
         <div class="project-tags">#AI #Fitness #ResponsiveDesign</div>
@@ -221,7 +226,7 @@
       </a>
 
       <a href="https://github.com/your-cinevision-link" class="project-card" target="_blank" rel="noopener">
-        <img src="C:\Users\user\Documents\Soy Khaled\portfolio_site\portfolio_site\le destin.png" alt="CinéVision Preview" class="project-thumb">
+        <img src="le destin.png" alt="CinéVision Preview" class="project-thumb">
         <div class="project-title">CinéVision</div>
         <div class="project-desc">My short film project exploring societal themes through cinematography and storytelling, selected in local youth events.</div>
         <div class="project-tags">#Filmmaking #Creative #Storytelling</div>
