@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khaled | Projects</title>
+  <style>
+    :root {
+      --bg: #000;
+      --text: #EEE;
+      --accent: #F4C6D0;
+      --alt-accent: #C0A9F1;
+      --card-bg: #111;
+      --border: #6B6B6B;
+    }
+
+    body.light {
+      --bg: #FFF;
+      --text: #111;
+      --accent: #8A2BE2;
+      --alt-accent: #ff69b4;
+      --card-bg: #F5F5F5;
+      --border: #CCC;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background-color: var(--bg);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    nav {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--accent);
+      color: var(--bg);
+      border-color: var(--border);
+    }
+
+    .toggle-theme {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      padding: 0.5rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.3s;
+    }
+
+    .toggle-theme:hover {
+      background-color: var(--accent);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      text-align: center;
+      background: linear-gradient(45deg, var(--accent), var(--alt-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      padding: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc {
+      color: var(--border);
+      font-size: 0.95rem;
+    }
+
+    .project-tags {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--alt-accent);
+    }
+
+    footer {
+      background-color: var(--bg);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-theme" id="themeToggle" aria-label="Toggle theme">☀️</button>
+
+  <header>
+    <h1>My Projects</h1>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./projects.html">Projects</a>
+      <a href="./about.html">About</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Highlighted Work</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">AIthlete</div>
+        <div class="project-desc">An AI-powered fitness coaching platform with personalized plans, health monitoring, and expert feedback.</div>
+        <div class="project-tags">#AI #Fitness #ResponsiveDesign</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">EduSolve Hackathon App</div>
+        <div class="project-desc">Prototype created in 48 hours to tackle Tunisia's education challenges. I designed the full UI/UX and mobile prototype.</div>
+        <div class="project-tags">#Hackathon #Design #Education</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">Medical AI Assistant</div>
+        <div class="project-desc">A smart system that assists doctors in making better decisions using image processing and deep learning insights.</div>
+        <div class="project-tags">#MedicalAI #ML #Healthcare</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">CinéVision</div>
+        <div class="project-desc">My short film project exploring societal themes through cinematography and storytelling, selected in local youth events.</div>
+        <div class="project-tags">#Filmmaking #Creative #Storytelling</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Khaled | Explore more on GitHub or LinkedIn</p>
+  </footer>
+
+  <script>
+    // Scroll animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.project-card').forEach(el => observer.observe(el));
+
+    // Theme toggle
+    const toggleBtn = document.getElementById("themeToggle");
+    const body = document.body;
+
+    function setTheme(mode) {
+      body.classList.toggle("light", mode === "light");
+      localStorage.setItem("theme", mode);
+      toggleBtn.textContent = mode === "light" ? "🌙" : "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      const isLight = body.classList.contains("light");
+      setTheme(isLight ? "dark" : "light");
+    });
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) setTheme(savedTheme);
+  </script>
+</body>
+</html>

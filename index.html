@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khaled Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --text: #EEE;
+      --accent: #F4C6D0;
+      --alt-accent: #C0A9F1;
+      --card-bg: #111;
+      --border: #6B6B6B;
+      --transition: 0.4s ease;
+    }
+
+    body.light {
+      --bg: #FFF;
+      --text: #111;
+      --accent: #8A2BE2;
+      --alt-accent: #FF69B4;
+      --card-bg: #F5F5F5;
+      --border: #CCC;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      transition: background-color var(--transition), color var(--transition);
+      scroll-behavior: smooth;
+    }
+
+    header.hero {
+      position: sticky;
+      top: 0;
+      background-color: var(--bg);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--accent), var(--alt-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--border);
+      font-size: 1.1rem;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: var(--text);
+      margin: 0 0.8rem;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color var(--transition);
+    }
+
+    nav a:hover {
+      background-color: var(--accent);
+      color: var(--bg);
+      border-color: var(--border);
+    }
+
+    .toggle-theme {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      background: none;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      padding: 0.4rem 0.6rem;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 3rem 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--accent), var(--alt-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .frame {
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all var(--transition);
+    }
+
+    .frame.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .profile-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+    }
+
+    .frame-text p {
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+
+    form input,
+    form button {
+      padding: 0.6rem;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-top: 0.5rem;
+      background-color: var(--card-bg);
+      color: var(--text);
+      width: 250px;
+      max-width: 90%;
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    form button {
+      background-color: var(--accent);
+      color: var(--bg);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: var(--alt-accent);
+    }
+
+    footer {
+      background-color: var(--bg);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Skills */
+    .progress-bar {
+      background-color: #ddd;
+      border-radius: 8px;
+      width: 100%;
+      height: 10px;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      background-color: var(--accent);
+    }
+
+    .skill {
+      margin-bottom: 1.5rem;
+    }
+
+    #testimonials {
+      background-color: var(--card-bg);
+      padding: 3rem;
+    }
+
+    .testimonial-card {
+      background-color: var(--bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+    }
+
+    #blog {
+      background-color: var(--card-bg);
+      padding: 3rem;
+    }
+
+    .blog-post {
+      margin-bottom: 2rem;
+    }
+
+    .blog-post h3 {
+      color: var(--accent);
+    }
+
+    .blog-post a {
+      color: var(--alt-accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .blog-post a:hover {
+      text-decoration: underline;
+    }
+
+    .background-video video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      .frame {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-photo {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-theme" id="themeToggle">☀️</button>
+
+  <!-- Background Video -->
+  <div class="background-video">
+    <video autoplay muted loop>
+      <source src="your-video-path.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <header class="hero">
+    <h1>KHALED MNEJJA</h1>
+    <p class="subtitle">Software Engineer • UI/UX Designer • Filmmaker</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section id="intro">
+    <h2>Welcome</h2>
+    <p>I build smart apps, striking visuals, and stories that inspire. Explore a fusion of code, design, and creativity.</p>
+  </section>
+
+  <section id="promo">
+    <div class="frame">
+      <img src="khaled.JPG" alt="Professional Photo" class="profile-photo">
+      <div class="frame-text">
+        <h2>Let’s Build the Future Together</h2>
+        <p>Partner with me to create visionary solutions and grow our success — together, we reach greatness.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skill">
+      <label>Web Development</label>
+      <div class="progress-bar">
+        <div class="progress" style="width: 85%"></div>
+      </div>
+    </div>
+    <div class="skill">
+      <label>UI/UX Design</label>
+      <div class="progress-bar">
+        <div class="progress" style="width: 90%"></div>
+      </div>
+    </div>
+    <div class="skill">
+      <label>Film Making</label>
+      <div class="progress-bar">
+        <div class="progress" style="width: 85%"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h2>What People Say</h2>
+    <div class="testimonial-card">
+      <p>"Khaled’s work has transformed our business. The app he built for us was a game-changer."</p>
+      <p>- Client Name, Company</p>
+    </div>
+    <div class="testimonial-card">
+      <p>"The design and functionality of our product improved significantly thanks to Khaled's work."</p>
+      <p>- Client Name, Company</p>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h2>Latest Posts</h2>
+    <div class="blog-post">
+      <h3>Blog Post Title</h3>
+      <p>A short summary or introduction to your blog post goes here...</p>
+      <a href="#">Read More</a>
+    </div>
+    <div class="blog-post">
+      <h3>Blog Post Title</h3>
+      <p>A short summary or introduction to your blog post goes here...</p>
+      <a href="#">Read More</a>
+    </div>
+  </section>
+
+  <section id="newsletter">
+    <h2>Stay Updated with My Work</h2>
+    <p>Get the latest news, updates, and insights delivered straight to your inbox.</p>
+    <form id="subscribeForm">
+      <input type="email" id="emailInput" placeholder="Your email address" required />
+      <br />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <footer id="footer">
+    <p>© 2025 Khaled | Inspired by AIthlete</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.frame').forEach(el => observer.observe(el));
+    document.querySelectorAll('section').forEach(el => observer.observe(el));
+
+    document.getElementById("subscribeForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("emailInput").value;
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      alert(valid ? "Thanks for subscribing!" : "Please enter a valid email address.");
+      if (valid) this.reset();
+    });
+
+    const toggleBtn = document.getElementById("themeToggle");
+    const body = document.body;
+
+    function setTheme(mode) {
+      body.classList.toggle("light", mode === "light");
+      localStorage.setItem("theme", mode);
+      toggleBtn.textContent = mode === "light" ? "🌙" : "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      const isLight = body.classList.contains("light");
+      setTheme(isLight ? "dark" : "light");
+    });
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) setTheme(savedTheme);
+  </script>
+</body>
+</html>
