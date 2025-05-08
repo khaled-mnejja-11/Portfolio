@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Khaled</title>
+  <title>Khaled Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #000;
@@ -12,6 +14,7 @@
       --alt-accent: #C0A9F1;
       --card-bg: #111;
       --border: #6B6B6B;
+      --transition: 0.4s ease;
     }
 
     body.light {
@@ -27,41 +30,46 @@
       margin: 0;
       background-color: var(--bg);
       color: var(--text);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      transition: background-color var(--transition), color var(--transition);
+      scroll-behavior: smooth;
     }
 
-    header {
+    header.hero {
       position: sticky;
       top: 0;
       background-color: var(--bg);
-      padding: 1.5rem 1rem;
       text-align: center;
+      padding: 1.5rem 1rem;
       border-bottom: 1px solid var(--border);
       z-index: 1000;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--accent), var(--alt-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--border);
+      font-size: 1.1rem;
     }
 
     nav {
       margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
     }
 
     nav a {
       color: var(--text);
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
+      margin: 0 0.8rem;
       text-decoration: none;
       font-weight: 500;
-      border: 1px solid transparent;
-      transition: all 0.3s ease;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color var(--transition);
     }
 
     nav a:hover {
@@ -69,47 +77,63 @@
       color: var(--bg);
       border-color: var(--border);
     }
+    nav a.active {
+      background-color: var(--accent);
+      color: var(--bg);
+    }
 
     .toggle-theme {
       position: absolute;
       right: 1rem;
       top: 1rem;
-      background: var(--card-bg);
+      background: none;
       color: var(--text);
       border: 1px solid var(--border);
       border-radius: 50%;
-      padding: 0.5rem;
+      padding: 0.4rem 0.6rem;
       cursor: pointer;
-      font-size: 1.2rem;
-      transition: background 0.3s;
+      transition: all var(--transition);
     }
 
-    .toggle-theme:hover {
-      background-color: var(--accent);
-    }
-
-    main {
-      max-width: 900px;
+    section {
+      max-width: 1000px;
       margin: auto;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
     }
 
     h2 {
-      font-size: 1.8rem;
-      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
       background: linear-gradient(45deg, var(--accent), var(--alt-accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 2rem;
     }
 
-    .about-card {
+    .frame {
       background-color: var(--card-bg);
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       padding: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      opacity: 1;
+      transform: translateY(0);
+      transition: all var(--transition);
+    }
+
+    .profile-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+    }
+
+    .frame-text p {
+      margin-top: 0.5rem;
       line-height: 1.6;
-      font-size: 1rem;
     }
 
     footer {
@@ -120,59 +144,71 @@
       border-top: 1px solid var(--border);
     }
 
-    @media (max-width: 600px) {
-      .about-card {
-        font-size: 0.95rem;
-        padding: 1.5rem;
+    @media (max-width: 768px) {
+      .frame {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-photo {
+        margin-bottom: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <button class="toggle-theme" id="themeToggle">☀️</button>
-
-  <header>
-    <h1>About Me</h1>
+  <button class="toggle-theme" id="themeToggle" aria-label="Toggle theme">☀️</button>
+  <header class="hero">
+    <h1>KHALED MNEJJA</h1>
+    <p class="subtitle">Software Engineer • UI/UX Designer • Filmmaker</p>
     <nav>
-      <a href="./index.html">Home</a>
-      <a href="./projects.html">Projects</a>
-      <a href="./about.html">About</a>
-      <a href="./contact.html">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <main>
-    <h2>Welcome to My Journey!</h2>
-    <div class="about-card">
-      <p>Hi, I'm Khaled, a passionate software engineering student at IIT Sfax. I specialize in creating innovative, user-centric solutions that integrate cutting-edge technology, like AI, into practical applications.</p>
-      <p>My expertise includes building responsive mobile and web applications with a strong focus on UI/UX design, particularly in the fitness and medical fields. In my spare time, I explore AI technologies and work on projects that aim to improve everyday life.</p>
-      <p>Feel free to check out my <a href="./projects.html">projects</a> and get in touch if you're interested in collaborating!</p>
+  <section>
+    <h2>About Me</h2>
+    <div class="frame">
+      <img src="khaled.JPG" alt="Khaled Portrait" class="profile-photo">
+      <div class="frame-text">
+        <p>Hi, I'm Khaled — a passionate software engineering student at IIT Sfax. I specialize in crafting innovative, user-centric solutions that merge cutting-edge technology like AI with real-world impact.</p>
+        <p>I design and build responsive applications with a strong emphasis on UI/UX, especially in the fitness and medical tech domains. I also enjoy experimenting with AI, creating tools that improve lives, and producing digital content with purpose and creativity.</p>
+        <p>If you're into forward-thinking tech or creative <a href="./projects.html">projects</a>, let’s connect and make something amazing.</p>
+      </div>
     </div>
-  </main>
+  </section>
+
+  <section>
+    <h2>Timeline</h2>
+    <div class="frame">
+      <div class="frame-text">
+        <p>🎓 2025 – Engineering degree in Software Engineering from IIT Sfax.</p>
+        <p>💡 2024 – Built AIthlete, a smart coaching app for fitness and diet, as my final year project.</p>
+        <p>🚀 2023 – Participated in a hackathon solving educational problems in Tunisia within 48 hours.</p>
+        <p>🌍 2017 – Earned Cambridge C2 Proficiency Certificate in English.</p>
+        <p>🎥 2016+ – Self-taught video editor & creative filmmaker.</p>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <p>© 2025 Khaled | Powered by Passion and Innovation</p>
+    <p>© 2025 Khaled Mnejja. All rights reserved.</p>
   </footer>
 
   <script>
-    // Theme toggle functionality
-    const toggleBtn = document.getElementById("themeToggle");
-    const body = document.body;
-
-    function setTheme(mode) {
-      body.classList.toggle("light", mode === "light");
-      localStorage.setItem("theme", mode);
-      toggleBtn.textContent = mode === "light" ? "🌙" : "☀️";
-    }
-
-    toggleBtn.addEventListener("click", () => {
-      const isLight = body.classList.contains("light");
-      setTheme(isLight ? "dark" : "light");
+    // Immediately make frames visible
+    document.querySelectorAll(".frame").forEach(frame => {
+      frame.classList.add("visible");
     });
 
-    // Load saved theme
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) setTheme(savedTheme);
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      toggle.textContent = document.body.classList.contains("light") ? "🌙" : "☀️";
+    });
   </script>
 </body>
 </html>

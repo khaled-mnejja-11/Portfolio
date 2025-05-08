@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Khaled</title>
+  <title>Khaled Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #000;
@@ -12,6 +14,7 @@
       --alt-accent: #C0A9F1;
       --card-bg: #111;
       --border: #6B6B6B;
+      --transition: 0.4s ease;
     }
 
     body.light {
@@ -27,41 +30,46 @@
       margin: 0;
       background-color: var(--bg);
       color: var(--text);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      transition: background-color var(--transition), color var(--transition);
+      scroll-behavior: smooth;
     }
 
-    header {
+    header.hero {
       position: sticky;
       top: 0;
       background-color: var(--bg);
-      padding: 1.5rem 1rem;
       text-align: center;
+      padding: 1.5rem 1rem;
       border-bottom: 1px solid var(--border);
       z-index: 1000;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--accent), var(--alt-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--border);
+      font-size: 1.1rem;
     }
 
     nav {
       margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
     }
 
     nav a {
       color: var(--text);
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
+      margin: 0 0.8rem;
       text-decoration: none;
       font-weight: 500;
-      border: 1px solid transparent;
-      transition: all 0.3s ease;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color var(--transition);
     }
 
     nav a:hover {
@@ -69,85 +77,100 @@
       color: var(--bg);
       border-color: var(--border);
     }
+    nav a.active {
+      background-color: var(--accent);
+      color: var(--bg);
+    }
 
     .toggle-theme {
       position: absolute;
       right: 1rem;
       top: 1rem;
-      background: var(--card-bg);
+      background: none;
       color: var(--text);
       border: 1px solid var(--border);
       border-radius: 50%;
-      padding: 0.5rem;
+      padding: 0.4rem 0.6rem;
       cursor: pointer;
-      font-size: 1.2rem;
-      transition: background 0.3s;
+      transition: all var(--transition);
     }
 
-    .toggle-theme:hover {
-      background-color: var(--accent);
-    }
-
-    main {
+    section {
       max-width: 900px;
       margin: auto;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
     }
 
     h2 {
-      font-size: 1.8rem;
+      font-size: 2rem;
+      margin-bottom: 2rem;
       text-align: center;
       background: linear-gradient(45deg, var(--accent), var(--alt-accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 2rem;
     }
 
-    .contact-card {
+    .contact-methods, .report-problem {
       background-color: var(--card-bg);
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       padding: 2rem;
-      line-height: 1.6;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-bottom: 3rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .contact-item strong {
+      min-width: 100px;
+      display: inline-block;
+    }
+
+    .contact-item a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .contact-item a:hover {
+      color: var(--alt-accent);
+    }
+
+    .report-problem form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .report-problem input,
+    .report-problem textarea,
+    .report-problem button {
+      font-family: 'Poppins', sans-serif;
       font-size: 1rem;
-      transition: transform 0.3s ease;
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    .contact-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .form-field {
-      margin: 1rem 0;
-      width: 100%;
-    }
-
-    .form-field input,
-    .form-field textarea {
-      width: 100%;
-      padding: 1rem;
-      border-radius: 8px;
+      padding: 0.8rem;
+      border-radius: 10px;
       border: 1px solid var(--border);
-      background-color: var(--card-bg);
+      background-color: var(--bg);
       color: var(--text);
-      font-size: 1rem;
+      transition: all var(--transition);
     }
 
-    .form-field button {
+    .report-problem textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .report-problem button {
       background-color: var(--accent);
       color: var(--bg);
-      padding: 1rem 2rem;
-      font-size: 1rem;
       border: none;
-      border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
 
-    .form-field button:hover {
+    .report-problem button:hover {
       background-color: var(--alt-accent);
     }
 
@@ -158,99 +181,66 @@
       font-size: 0.9rem;
       border-top: 1px solid var(--border);
     }
-
-    @media (max-width: 600px) {
-      .contact-card {
-        font-size: 0.95rem;
-        padding: 1.5rem;
-      }
-    }
   </style>
 </head>
 <body>
-  <button class="toggle-theme" id="themeToggle">☀️</button>
-
-  <header>
-    <h1>Contact Me</h1>
+  <button class="toggle-theme" id="themeToggle" aria-label="Toggle theme">☀️</button>
+  <header class="hero">
+    <h1>KHALED MNEJJA</h1>
+    <p class="subtitle">Software Engineer • UI/UX Designer • Filmmaker</p>
     <nav>
-      <a href="./index.html">Home</a>
-      <a href="./projects.html">Projects</a>
-      <a href="./about.html">About</a>
-      <a href="./contact.html">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
     </nav>
   </header>
 
-  <main>
-    <h2>Get in Touch</h2>
-    <div class="contact-card">
-      <p>I would love to hear from you! Whether you want to discuss a project, share ideas, or just say hello, feel free to reach out.</p>
-      
-      <form id="contactForm">
-        <div class="form-field">
-          <input type="text" id="name" placeholder="Your Name" required />
-        </div>
-        <div class="form-field">
-          <input type="email" id="email" placeholder="Your Email" required />
-        </div>
-        <div class="form-field">
-          <textarea id="message" placeholder="Your Message" rows="6" required></textarea>
-        </div>
-        <div class="form-field">
-          <button type="submit">Send Message</button>
-        </div>
+  <section>
+    <h2>Contact Me</h2>
+    <div class="contact-methods">
+      <div class="contact-item">
+        <strong>Instagram:</strong> <a href="https://www.instagram.com/swagikhaled?igsh=MWZxYjlmN3ozazB5Mg%3D%3D&utm_source=qr" target="_blank">@khaled_mnejja/Instagram</a>
+      </div>
+      <div class="contact-item">
+        <strong>Facebook</strong> <a href="https://www.facebook.com/swagi.khaled.3" target="_blank">@khaled_mnejja/Facebook</a>
+      </div>
+      <div class="contact-item">
+        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/soy-khaled-88866a364/" target="_blank">@khaled_mnejja/Linked in</a>
+      </div>
+      <div class="contact-item">
+        <strong>GitHub:</strong> <a href="https://github.com/khaled-mnejja-11" target="_blank">@khaled_mnejja/GitHub</a>
+      </div>
+      <div class="contact-item">
+        <strong>Email:</strong> <a href="mailto:swagikhaled@gmail.com">swagikhaled@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <strong>Phone:</strong> <a href="tel:+21628461723">+216 28 461 723</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Report a Problem</h2>
+    <div class="report-problem">
+      <form action="https://formspree.io/f/xanojzng" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Describe the issue..." required></textarea>
+        <button type="submit">Submit Report</button>
       </form>
     </div>
-  </main>
+  </section>
 
   <footer>
-    <p>© 2025 Khaled | Designed with care, powered by passion</p>
+    <p>© 2025 Khaled Mnejja. All rights reserved.</p>
   </footer>
 
   <script>
-    // Scroll reveal for contact card
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.contact-card').forEach(el => observer.observe(el));
-
-    // Theme toggle functionality
-    const toggleBtn = document.getElementById("themeToggle");
-    const body = document.body;
-
-    function setTheme(mode) {
-      body.classList.toggle("light", mode === "light");
-      localStorage.setItem("theme", mode);
-      toggleBtn.textContent = mode === "light" ? "🌙" : "☀️";
-    }
-
-    toggleBtn.addEventListener("click", () => {
-      const isLight = body.classList.contains("light");
-      setTheme(isLight ? "dark" : "light");
-    });
-
-    // Load saved theme
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) setTheme(savedTheme);
-
-    // Contact form handling
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
-
-      // Simple email validation and form submission alert
-      if (!name || !email || !message) {
-        alert("Please fill out all fields.");
-      } else {
-        alert(`Message sent! Thank you, ${name}.`);
-        this.reset();
-      }
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      toggle.textContent = document.body.classList.contains("light") ? "🌙" : "☀️";
     });
   </script>
 </body>

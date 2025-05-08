@@ -30,22 +30,27 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
-
-    header {
+    header.hero {
       position: sticky;
       top: 0;
       background-color: var(--bg);
-      padding: 1.5rem 1rem;
       text-align: center;
+      padding: 1.5rem 1rem;
       border-bottom: 1px solid var(--border);
       z-index: 1000;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--accent), var(--alt-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-
+    .subtitle {
+      color: var(--border);
+      font-size: 1.1rem;
+    }
     nav {
       margin-top: 1rem;
       display: flex;
@@ -157,13 +162,14 @@
 <body>
   <button class="toggle-theme" id="themeToggle" aria-label="Toggle theme">☀️</button>
 
-  <header>
-    <h1>My Projects</h1>
+  <header class="hero">
+    <h1>KHALED MNEJJA</h1>
+    <p class="subtitle">Software Engineer • UI/UX Designer • Filmmaker</p>
     <nav>
-      <a href="./index.html">Home</a>
-      <a href="./projects.html">Projects</a>
-      <a href="./about.html">About</a>
-      <a href="./contact.html">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
