@@ -3,9 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Khaled Portfolio</title>
+  <title>Khaled Mnejja - Portfolio</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Khaled Mnejja's personal portfolio showcasing projects in software engineering, UI/UX design, and filmmaking. Explore AIthlete, CinéVision, and more.">
+  <meta name="author" content="Khaled Mnejja">
+  <meta name="keywords" content="Khaled Mnejja, software engineer, UI/UX designer, portfolio, filmmaker, AIthlete, Tunisia, web development, frontend design">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Khaled Mnejja - Portfolio">
+  <meta property="og:description" content="Explore the personal portfolio of Khaled Mnejja: software engineer, UI/UX designer, and filmmaker.">
+  <meta property="og:image" content="https://yourdomain.com/images/preview.jpg">
+  <meta property="og:url" content="https://khaled-mnejja-11.github.io/Portfolio/index.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Structured Data for SEO (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Khaled Mnejja",
+      "jobTitle": "Software Engineer, UI/UX Designer, Filmmaker",
+      "url": "https://khaled-mnejja-11.github.io/Portfolio/index.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/soy-khaled-88866a364/",
+        "https://github.com/khaled-mnejja-11"
+        "https://www.instagram.com/swagikhaled?igsh=MWZxYjlmN3ozazB5Mg%3D%3D&utm_source=qr"
+        "https://www.facebook.com/swagi.khaled.3"
+      ],
+      "image": "https://khaled-mnejja-11.github.io/Portfolio/index.html/images/profile.jpg"
+      "mailto: swagikhaled@gmail.com"
+    }
+  </script>
+
+  <!-- Fonts and Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     :root {
       --bg: #000;
@@ -138,7 +175,8 @@
     }
 
     form input,
-    form button {
+    form button,
+    form select {
       padding: 0.6rem;
       font-size: 0.95rem;
       border-radius: 8px;
@@ -227,16 +265,6 @@
       text-decoration: underline;
     }
 
-    .background-video video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-
     @media (max-width: 768px) {
       header h1 {
         font-size: 2rem;
@@ -244,43 +272,35 @@
       .subtitle {
         font-size: 1rem;
       }
-
       .frame {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
-
       .profile-photo {
         width: 120px;
         height: 120px;
         margin-bottom: 1rem;
       }
-
       section {
         padding: 2rem 1rem;
       }
-
       .progress-bar {
         height: 8px;
       }
-
       form input,
-      form button {
+      form button,
+      form select {
         width: 80%;
       }
+      .blog-post {
+        margin-bottom: 2.5rem;
+      }
     }
-    
   </style>
 </head>
 <body>
   <button class="toggle-theme" id="themeToggle">☀️</button>
-
-  <!--<div class="background-video">
-    <video autoplay muted loop>
-      <source src="C:\Users\user\Videos\EDITS\LE DESTIN\le destin.mp4" type="video/mp4" />
-    </video>
-  </div> -->
 
   <header class="hero">
     <h1>KHALED MNEJJA</h1>
@@ -346,41 +366,40 @@
     <h2>Latest Posts</h2>
     <div class="blog-post">
       <h3>LE DESTIN</h3>
-      <p>"LE DESTIN" is a captivating film exploring fate and life’s unpredictable choices, sponsored by BusinessHotel Sfax, Polyclinique Ebn Kholdoun, and Cafe Lounge Black Dose.
-      </p>
+      <p>"LE DESTIN" is a captivating film exploring fate and life’s unpredictable choices, sponsored by BusinessHotel Sfax, Polyclinique Ebn Kholdoun, and Cafe Lounge Black Dose.</p>
       <a href="projects.html">Learn more</a>
     </div>
     <div class="blog-post">
       <h3>AIthlete</h3>
-      <p>AIthlete is an AI-driven fitness app offering personalized plans, expert connections, and community support to help users achieve their fitness goals.
-      </p>
+      <p>AIthlete is an AI-driven fitness app offering personalized plans, expert connections, and community support to help users achieve their fitness goals.</p>
       <a href="projects.html">Learn more</a>
     </div>
   </section>
-<section id="newsletter">
-  <h2>Stay Updated with My Work</h2>
-  <p>Get the latest news, updates, and insights delivered straight to your inbox.</p>
-  <form action="https://formspree.io/f/mqaqboon" method="POST">
-    <input type="text" name="name" id="nameInput" placeholder="Your name" required />
-    <input type="email" name="email" id="emailInput" placeholder="Your email address" required />
-    <label for="preferences">Select your preferences:</label>
-    <select name="preferences" id="preferences">
-      <option value="web">Web Development</option>
-      <option value="uiux">UI/UX Design</option>
-      <option value="film">Filmmaking</option>
-    </select>
-    <br />
-    <button type="submit">Subscribe</button>
-  </form>
-  <div id="formMessage"></div>
-</section>
+
+  <section id="newsletter">
+    <h2>Stay Updated with My Work</h2>
+    <p>Get the latest news, updates, and insights delivered straight to your inbox.</p>
+    <form id="subscribeForm" action="https://formspree.io/f/mqaqboon" method="POST">
+      <input type="text" name="name" id="nameInput" placeholder="Your name" required />
+      <input type="email" name="email" id="emailInput" placeholder="Your email address" required />
+      <label for="preferences">Select your preferences:</label>
+      <select name="preferences" id="preferences" required>
+        <option value="" disabled selected>Choose a topic</option>
+        <option value="web">Web Development</option>
+        <option value="uiux">UI/UX Design</option>
+        <option value="film">Filmmaking</option>
+      </select>
+      <br />
+      <button type="submit">Subscribe</button>
+    </form>
+    <div id="formMessage"></div>
+  </section>
 
   <footer id="footer">
     <p>© 2025 Khaled | Inspired by AIthlete</p>
   </footer>
 
   <script>
-    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -415,8 +434,11 @@
     });
 
     const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) setTheme(savedTheme);
-    
+    if (savedTheme === "light") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
   </script>
 </body>
 </html>
